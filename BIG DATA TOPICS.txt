@@ -1,0 +1,230 @@
+🧠 Big Data Technologies — Complete Topic List
+
+Module 1: Introduction to Big Data
+
+What is Big Data?
+
+Characteristics of Big Data (5 Vs)
+
+Big Data vs Traditional Data
+
+Sources of Big Data
+
+Big Data Adoption & Applications
+
+Challenges in Handling Big Data
+
+Research and Changing Nature of Data Repositories
+
+Data Sharing & Reuse Practices
+
+Repository Data Curation and Management
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Module 2: Hadoop – Introduction to Big Data Programming
+
+What is Hadoop?
+
+Hadoop Ecosystem & Components
+
+Hadoop Stack Overview
+
+HDFS (Hadoop Distributed File System) – Architecture
+
+Blocks, Namenode, Datanode Concepts
+
+Java Interfaces to HDFS
+
+HDFS Command Line & Web Interface
+
+HDFS Java API
+
+Hadoop Installation and Development Environment
+
+Basic Hadoop Commands
+
+Scaling Hadoop & Event Stream Processing
+
+Complex Event Processing in Hadoop
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Module 3: MapReduce Programming
+
+What is MapReduce?
+
+Anatomy of a MapReduce Job
+
+Developing a MapReduce Application
+
+Input Splits, Mappers, Reducers
+
+Shuffle & Sort Phase
+
+Job Scheduling and Task Execution
+
+Handling Failures in MapReduce
+
+Input & Output Formats
+
+Real-World MapReduce Examples
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Module 4: Hadoop Administration
+
+Setting Up a Hadoop Cluster
+
+Cluster Specification & Installation
+
+Hadoop Configuration Files
+
+Monitoring & Maintenance in HDFS
+
+Security in Hadoop
+
+Administering Hadoop & Benchmarking
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Module 5: Data Warehousing & ETL Tools
+
+Introduction to Data Warehousing
+
+Data Lakes vs Data Warehouses
+
+ETL vs ELT Concepts
+
+Designing ETL Pipelines
+
+Designing Data Lakes
+
+Apache Airflow Overview
+
+Informatica (ETL Tool) Overview
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Module 6: Hive – Data Warehousing on Hadoop
+
+Introduction to Hive
+
+Hive Architecture & Components
+
+Hive Query Language (HQL)
+
+Managed & External Tables
+
+Creating Databases & Tables in Hive
+
+Loading Data into Hive Tables
+
+Data Types & File Formats in Hive
+
+Operators & Built-in Functions
+
+Joins in Hive (Map-side & Reduce-side)
+
+Sorting, Searching & Indexing
+
+Bucketing in Hive
+
+Partitioning in Hive
+
+Hive Optimization Techniques
+
+Case Studies: Ingestion & Warehousing with Hive
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Module 7: HBase – NoSQL Database
+
+Introduction to HBase
+
+HBase vs RDBMS vs Hive
+
+HBase Architecture & Data Model
+
+HBase Shell Commands
+
+Java Client API for HBase
+
+CRUD Operations
+
+HBase Security
+
+Real-world Use Cases
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Module 8: Apache Spark – Big Data Processing Engine
+
+Introduction to Apache Spark
+
+Spark Ecosystem Components
+
+Spark Architecture (Driver & Executors)
+
+RDD (Resilient Distributed Datasets)
+
+RDD Operations & Transformations
+
+Key-Value Pair Operations
+
+RDD Persistence & Caching
+
+Passing Functions to Spark
+
+Job Optimization in Spark
+
+Working with External Datasets
+
+Shared Variables (Broadcast & Accumulators)
+
+Spark SQL & DataFrames
+
+EDA using PySpark
+
+Spark Streaming Basics
+
+Spark MLlib (Machine Learning Library)
+
+ML APIs in Spark
+
+Deploying Spark on Clusters
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Module 9: Kafka & Integration with Spark
+
+Introduction to Apache Kafka
+
+Kafka Architecture (Broker, Zookeeper, Topics, Partitions)
+
+Kafka Producer & Consumer API
+
+Kafka Connect API
+
+Integrating Spark with Kafka
+
+Real-time Data Pipeline Example
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Module 10: Connecting Spark with Databases
+
+JDBC Integration with Spark
+
+Reading/Writing Data from MySQL/PostgreSQL
+
+Using DataFrames for ETL
+
+End-to-End Data Flow Example
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Module 11: Revision & Practice
+
+Quick Recap of All Technologies
+
+Concept Linking (Hadoop → Hive → Spark → Kafka)
+
+Common Interview Questions
+
+Mock MCQs for CCEE
+
+Final 2–3 Page Revision Sheet
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
