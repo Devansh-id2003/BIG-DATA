@@ -1,0 +1,117 @@
+Topic 1: Introduction to Hadoop and Its Ecosystem
+📘 Concept Explanation
+
+Hadoop is an open-source framework developed by the Apache Software Foundation for distributed storage and processing of large data sets across clusters of computers using simple programming models.
+
+It was inspired by Google’s MapReduce and Google File System (GFS) papers.
+
+🔹 1. Why Hadoop?
+
+Traditional systems couldn’t handle huge, unstructured, and fast-growing data (Big Data).
+Hadoop solves this by:
+
+Storing massive data reliably across many machines (using HDFS).
+
+Processing data in parallel efficiently (using MapReduce).
+
+Scalability: Add more nodes easily.
+
+Fault Tolerance: Data automatically replicated to avoid loss.
+
+🔹 2. Core Components of Hadoop
+
+HDFS (Hadoop Distributed File System) –
+Used for storing large files across distributed nodes.
+
+YARN (Yet Another Resource Negotiator) –
+Manages and allocates cluster resources.
+
+MapReduce –
+Programming model to process data in parallel.
+
+Hadoop Common –
+Set of shared libraries and utilities supporting the other modules.
+
+🔹 3. Hadoop Ecosystem
+
+The Hadoop ecosystem includes various tools built around the core Hadoop framework:
+
+Layer	Tools	Purpose
+Data Storage	HDFS, HBase	Distributed file and NoSQL storage
+Data Processing	MapReduce, Spark, Pig	Batch and real-time processing
+Data Querying	Hive, Impala, Drill	SQL-like queries
+Data Ingestion	Sqoop, Flume	Import/export data
+Data Workflow	Oozie, Airflow	Pipeline scheduling
+Monitoring	Ambari, Zookeeper	Cluster management
+🔹 4. Hadoop Versions
+
+Hadoop 1.x: MapReduce + HDFS
+
+Hadoop 2.x: Introduced YARN for better resource management
+
+Hadoop 3.x: Improved scalability, erasure coding, and multiple NameNodes
+
+🔹 5. Key Features
+
+Scalability – Works from a few nodes to thousands
+
+Cost-Effective – Runs on commodity hardware
+
+High Availability – Replication ensures no data loss
+
+Data Locality Optimization – Moves computation to data, not data to computation
+
+🧠 5 Quality MCQs
+
+Q1. Which component of Hadoop is responsible for storing data across multiple nodes?
+A. MapReduce
+B. YARN
+C. HDFS
+D. Hive
+
+Q2. The role of YARN in Hadoop is to:
+A. Store data
+B. Manage resources and job scheduling
+C. Clean data before processing
+D. Perform SQL queries
+
+Q3. Hadoop is best suited for:
+A. Small, structured datasets
+B. Large-scale unstructured data
+C. Data stored in relational databases
+D. Only text data
+
+Q4. Which of the following tools is used for data ingestion into Hadoop?
+A. Sqoop
+B. Spark
+C. Hive
+D. Pig
+
+Q5. Which statement about Hadoop 3.x is correct?
+A. It removes HDFS
+B. It supports multiple active NameNodes
+C. It does not support YARN
+D. It cannot handle large clusters
+
+✅ Answers with Explanations
+
+C. HDFS – Handles distributed file storage.
+
+B. YARN – Allocates cluster resources for tasks.
+
+B. Hadoop is designed for massive unstructured or semi-structured data.
+
+A. Sqoop – Used for importing/exporting between RDBMS and Hadoop.
+
+B. Hadoop 3.x supports multiple NameNodes and erasure coding.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
