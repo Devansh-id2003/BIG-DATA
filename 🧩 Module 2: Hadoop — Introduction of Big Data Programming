@@ -107,11 +107,445 @@ B. Hadoop 3.x supports multiple NameNodes and erasure coding.
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+Topic 2: The Hadoop Distributed File System (HDFS) Overview
+📘 Concept Explanation
 
+The Hadoop Distributed File System (HDFS) is the primary storage system of Hadoop.
+It is designed to store huge datasets reliably and stream those datasets at high bandwidth to user applications — all across clusters of inexpensive machines.
 
+🔹 1. What is HDFS?
 
+HDFS is a distributed file system that splits large files into blocks (default 128 MB or 256 MB).
 
+These blocks are stored across multiple nodes in the cluster.
 
+Each block is replicated (default replication factor = 3) to ensure fault tolerance.
 
+🔹 2. Core Components of HDFS
 
+NameNode (Master Node)
 
+Maintains metadata (info about files, directories, and block locations).
+
+Controls access to files.
+
+Does not store actual data.
+
+DataNode (Worker Node)
+
+Stores actual data blocks.
+
+Periodically reports block health and status to the NameNode.
+
+Secondary NameNode
+
+Checkpoint node, not a backup of the NameNode.
+
+Periodically merges edit logs and fsimage to prevent the NameNode from becoming overloaded.
+
+🔹 3. Features of HDFS
+
+High Fault Tolerance: Data replication ensures data availability even if a node fails.
+
+High Throughput: Optimized for batch processing rather than low latency.
+
+Scalability: Can store petabytes of data by adding nodes.
+
+Data Locality: Computation occurs near where data is stored to minimize data transfer.
+
+🔹 4. HDFS Block Concept
+
+Large files are split into fixed-size blocks for storage.
+
+Each block is stored on different DataNodes for parallel processing.
+
+Example: A 512 MB file with 128 MB block size → 4 blocks stored across different nodes.
+
+🔹 5. Fault Tolerance
+
+If one DataNode fails, Hadoop automatically retrieves data from another replica.
+
+Heartbeats from DataNodes help NameNode track health of nodes.
+
+Rack Awareness ensures replicas are placed across different racks for network reliability.
+
+🧠 5 Quality MCQs
+
+Q1. What is the default block size in HDFS?
+A. 32 MB
+B. 64 MB
+C. 128 MB
+D. 1 GB
+
+Q2. Which component of Hadoop stores metadata information like block locations?
+A. DataNode
+B. NameNode
+C. Secondary NameNode
+D. ResourceManager
+
+Q3. What is the purpose of the Secondary NameNode?
+A. Backup of NameNode
+B. Load balancing between DataNodes
+C. Periodically merges edit logs with fsimage
+D. Manages resource allocation
+
+Q4. What ensures that data remains available even if one node fails?
+A. HDFS Formatting
+B. Data Replication
+C. Edit Logs
+D. HDFS Block Splitting
+
+Q5. Which of the following best describes Data Locality in Hadoop?
+A. Data is always stored in the same rack
+B. Data is moved to the computation node for processing
+C. Computation is moved close to where data resides
+D. Data is processed on the client system
+
+✅ Answers with Explanations
+
+C. Default block size in HDFS is 128 MB (configurable).
+
+B. NameNode stores metadata and directory structure.
+
+C. Secondary NameNode performs periodic checkpointing.
+
+B. Replication ensures fault tolerance.
+
+C. Data locality minimizes data transfer by moving computation near data.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Topic 3: HDFS Architecture and Working
+📘 Concept Explanation
+
+The HDFS Architecture is built around a Master–Slave model, designed to handle large-scale distributed storage.
+It ensures high availability, fault tolerance, and scalable data access by distributing data across multiple nodes.
+
+🔹 1. HDFS Architecture Overview
+
+HDFS consists of two types of nodes operating in a cluster:
+
+Master Node → NameNode
+
+Manages metadata (file names, permissions, block locations).
+
+Keeps namespace hierarchy (like a directory structure).
+
+Controls client access to files.
+
+Slave Nodes → DataNodes
+
+Store actual data blocks.
+
+Send heartbeats and block reports to NameNode periodically.
+
+A Hadoop cluster typically follows this structure:
+
+Client ↔ NameNode (Master)
+           ↕
+        DataNodes (Workers)
+
+🔹 2. File Read and Write Process
+
+A. Writing a File to HDFS
+
+The client contacts the NameNode to check file permissions and split data into blocks.
+
+NameNode assigns DataNodes to store the blocks.
+
+Data is written to the first DataNode → then replicated to other DataNodes.
+
+NameNode updates metadata about block locations.
+
+B. Reading a File from HDFS
+
+Client requests file metadata from the NameNode.
+
+NameNode responds with the list of DataNodes containing the file’s blocks.
+
+Client reads directly from the DataNodes in parallel.
+
+Blocks are combined back into the full file at the client end.
+
+🔹 3. Key Design Concepts
+
+Block Replication: Default replication factor = 3 (can be customized).
+
+Rack Awareness: Ensures replicas are stored on different racks for fault tolerance.
+
+Heartbeat Signals: Sent from DataNodes to NameNode to confirm health.
+
+Rebalancing: Redistributes data if nodes become unbalanced in storage.
+
+High Availability (HA): Hadoop 2.x+ allows multiple active NameNodes to avoid single points of failure.
+
+🔹 4. Advantages of HDFS Architecture
+
+Handles hardware failures automatically.
+
+Scales horizontally — add more nodes anytime.
+
+Provides reliable, distributed data storage.
+
+Optimized for large files and batch processing.
+
+🧠 5 Quality MCQs
+
+Q1. What type of architecture does HDFS follow?
+A. Peer-to-Peer
+B. Client–Server
+C. Master–Slave
+D. Centralized
+
+Q2. In HDFS, where is metadata information stored?
+A. DataNode
+B. Secondary NameNode
+C. NameNode
+D. ResourceManager
+
+Q3. Which process ensures data reliability in HDFS?
+A. Data compression
+B. Data encryption
+C. Data replication
+D. Data migration
+
+Q4. What happens when a DataNode fails in an HDFS cluster?
+A. Entire system crashes
+B. NameNode re-replicates data blocks from other replicas
+C. Secondary NameNode becomes active
+D. Client is disconnected permanently
+
+Q5. What is the purpose of rack awareness in Hadoop?
+A. To save network cost and improve reliability
+B. To track file access permissions
+C. To compress the HDFS blocks
+D. To increase NameNode memory
+
+✅ Answers with Explanations
+
+C. HDFS uses a Master–Slave architecture (NameNode = Master, DataNodes = Slaves).
+
+C. The NameNode holds metadata and file namespace.
+
+C. Replication ensures data reliability and fault tolerance.
+
+B. When a DataNode fails, the NameNode re-replicates missing blocks from other replicas.
+
+A. Rack Awareness optimizes data placement for fault tolerance and reduced network traffic.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Anatomy of Writing and Reading Files in HDFS
+📘 Concept Explanation
+
+In HDFS, files are split into blocks (default size: 128 MB or 256 MB) and distributed across DataNodes.
+
+Writing in HDFS:
+
+Client requests the NameNode to store a file.
+
+The NameNode checks if the file already exists and returns available DataNodes for block storage.
+
+The client writes data to the first DataNode, which pipelines it to the next nodes for replication (default: 3 copies).
+
+After successful block writes, the NameNode updates metadata (file name, block locations).
+
+Reading in HDFS:
+
+The client contacts the NameNode to get the block locations for a file.
+
+The client connects to the nearest DataNode (based on network topology) and starts reading.
+
+Data is read in parallel from multiple DataNodes for efficiency.
+
+This process ensures fault tolerance, scalability, and high throughput — ideal for large-scale distributed processing.
+
+🧠 5 Quality MCQs
+
+1. During a file write operation in HDFS, which component manages metadata and block locations?
+A) DataNode
+B) NameNode
+C) Secondary NameNode
+D) Client
+
+2. What is the default replication factor in HDFS?
+A) 1
+B) 2
+C) 3
+D) 4
+
+3. What happens if a DataNode fails during a write operation?
+A) File is deleted
+B) NameNode automatically reassigns the block to another DataNode
+C) Write operation stops permanently
+D) Replication is disabled
+
+4. In an HDFS read operation, the client retrieves block locations from:
+A) DataNode
+B) NameNode
+C) Secondary NameNode
+D) JobTracker
+
+5. Which of the following best describes data pipelining in HDFS?
+A) Client reads all blocks sequentially
+B) Data is replicated one node at a time in a chain fashion
+C) All nodes write the same block simultaneously
+D) Data is stored without replication
+
+✅ Answers
+
+B) NameNode → It stores and manages file metadata and block mapping.
+
+C) 3 → Default replication ensures fault tolerance.
+
+B) NameNode reassigns → Ensures data integrity by reallocating failed blocks.
+
+B) NameNode → It provides DataNode locations for reading.
+
+B) Data is replicated one node at a time in a chain fashion → Ensures efficient data replication across nodes.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Handling Read/Write Failures in HDFS
+📘 Concept Explanation
+HDFS is built for fault tolerance, meaning it can automatically handle hardware or software failures.
+
+When a write failure occurs (e.g., a DataNode goes down), HDFS uses replication and acknowledgment chains to recover:
+
+The client writes to the first DataNode → it pipelines data to others.
+
+If any DataNode fails, the NameNode detects it through heartbeat signals.
+
+The NameNode reassigns the block to another healthy DataNode to maintain the replication factor.
+
+During read operations, if a DataNode fails:
+
+The client automatically switches to another replica of the same block.
+
+Since multiple replicas exist, data availability is not affected.
+
+Checksum validation ensures data integrity — corrupted blocks are detected and replaced with a good copy from another replica.
+
+This fault tolerance and self-healing mechanism make HDFS highly reliable and resilient in large clusters.
+
+🧠 5 Quality MCQs
+1. In HDFS, how does the NameNode detect a failed DataNode?
+A) By checking data blocks directly
+B) Through missed heartbeat signals
+C) By user notification
+D) By manual admin check
+
+2. What happens when a DataNode fails during a write operation?
+A) File write stops
+B) Client retries with same DataNode
+C) NameNode allocates a new DataNode for replication
+D) Data is lost permanently
+
+3. During a read operation, if one replica is unavailable, HDFS will:
+A) Throw an error immediately
+B) Try another available replica automatically
+C) Wait until the failed node comes online
+D) Delete the file
+
+4. What mechanism is used by HDFS to detect data corruption?
+A) Block size check
+B) Data compression
+C) Checksum validation
+D) Heartbeat
+
+5. The replication process in HDFS helps mainly in:
+A) Increasing processing speed
+B) Handling node failures and ensuring fault tolerance
+C) Reducing storage usage
+D) Enhancing data security through encryption
+
+✅ Answers
+B) Through missed heartbeat signals → DataNodes send regular heartbeats; missed ones indicate failure.
+
+C) NameNode allocates a new DataNode → Maintains replication factor and fault tolerance.
+
+B) Try another available replica automatically → Ensures continuous data access.
+
+C) Checksum validation → Detects and replaces corrupted blocks.
+
+B) Handling node failures and ensuring fault tolerance → Core purpose of replication in HDFS.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+HDFS User and Admin Commands
+📘 Concept Explanation
+HDFS commands allow users and administrators to interact with the Hadoop Distributed File System via the command line.
+
+These commands are used for navigating directories, managing files, and monitoring system health.
+
+The syntax generally starts with:
+
+hdfs dfs -<command> <arguments>
+Common User Commands:
+
+hdfs dfs -ls / → Lists files and directories.
+
+hdfs dfs -mkdir /folder → Creates a directory in HDFS.
+
+hdfs dfs -put localfile /folder/ → Uploads a file to HDFS.
+
+hdfs dfs -get /folder/file localdir/ → Downloads file from HDFS to local.
+
+hdfs dfs -cat /file → Displays file content.
+
+hdfs dfs -rm /file → Deletes a file.
+
+Common Admin Commands:
+
+hdfs dfsadmin -report → Shows cluster status, capacity, and health.
+
+hdfs dfsadmin -safemode get → Checks if HDFS is in safe mode.
+
+hdfs dfsadmin -refreshNodes → Refreshes DataNode configuration.
+
+hdfs fsck / → Checks file system consistency (detects corrupt blocks).
+
+These commands help both users (for file operations) and admins (for maintenance and monitoring) manage HDFS effectively.
+
+🧠 5 Quality MCQs
+1. Which command is used to list files in the HDFS root directory?
+A) hdfs dfs -cat /
+B) hdfs dfs -ls /
+C) hdfs dfs -du /
+D) hdfs dfs -rm /
+
+2. What does the command hdfs dfs -put local.txt /data/ do?
+A) Moves the file from HDFS to local
+B) Uploads the file from local system to HDFS
+C) Deletes the file from HDFS
+D) Renames the file
+
+3. Which HDFS admin command is used to check file system health and detect corrupt blocks?
+A) hdfs dfsadmin -report
+B) hdfs fsck /
+C) hdfs dfsadmin -safemode get
+D) hdfs dfs -cat
+
+4. To download a file from HDFS to the local file system, which command is used?
+A) hdfs dfs -put
+B) hdfs dfs -copyToLocal
+C) hdfs dfs -cp
+D) hdfs dfs -getmerge
+
+5. The command hdfs dfsadmin -report provides information about:
+A) Running MapReduce jobs
+B) DataNode status and HDFS capacity
+C) HDFS file permissions only
+D) Cluster network traffic
+
+✅ Answers
+B) hdfs dfs -ls / → Lists all files/directories in the root folder.
+
+B) Uploads the file → It moves data from local to HDFS.
+
+B) hdfs fsck / → Used to perform a file system check.
+
+B) hdfs dfs -copyToLocal → Copies file from HDFS to local storage.
+
+B) DataNode status and capacity → Gives an overview of cluster health.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
