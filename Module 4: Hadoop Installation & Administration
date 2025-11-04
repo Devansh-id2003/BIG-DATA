@@ -294,6 +294,130 @@ B) Encryption protects data in storage and while transferring.
 
 
 
+Topic 25: Hadoop Administration and Monitoring
+📘 Concept Explanation
+
+Hadoop Administration involves setting up, configuring, and managing the Hadoop ecosystem, while Monitoring ensures that cluster resources are healthy, balanced, and efficiently used.
+An administrator’s job is to keep Hadoop running smoothly, detect failures, and optimize performance.
+
+⚙️ 1. Key Responsibilities of a Hadoop Administrator
+
+Cluster Setup and Configuration
+
+Installing Hadoop on multiple nodes.
+
+Configuring core files (core-site.xml, hdfs-site.xml, etc.).
+
+User and Access Management
+
+Creating user directories in HDFS.
+
+Setting permissions and quotas.
+
+Resource Management
+
+Managing YARN (Yet Another Resource Negotiator) to control job execution and resource usage.
+
+Performance Optimization
+
+Monitoring node health, memory, and CPU utilization.
+
+Balancing data blocks and ensuring fault tolerance.
+
+Backup and Recovery
+
+Regular snapshots and checkpointing of NameNode metadata.
+
+Configuring Secondary NameNode or Standby NameNode for disaster recovery.
+
+🧩 2. Hadoop Monitoring Tools and Techniques
+
+Effective monitoring ensures that cluster issues are detected early.
+
+🧠 Popular Monitoring Tools
+Tool	Description
+Ambari	Web-based Hadoop management and monitoring tool by Apache.
+Cloudera Manager	Enterprise-grade cluster management and monitoring solution.
+Nagios / Ganglia	Used for system-level monitoring (CPU, disk, network, etc.).
+Grafana + Prometheus	Used for creating dashboards and real-time metrics visualization.
+🔍 3. Key Metrics to Monitor
+Metric	Description
+NameNode Status	Monitors uptime, namespace usage, and heap memory.
+DataNode Health	Checks for missing or under-replicated blocks.
+Disk Usage	Ensures enough space on DataNodes.
+Job Performance	Tracks MapReduce or Spark job progress and resource utilization.
+Network Throughput	Detects network bottlenecks.
+🧰 4. Common Admin Commands
+Command	Purpose
+hdfs dfsadmin -report	View overall HDFS cluster report.
+hdfs dfsadmin -safemode get	Check if the cluster is in safe mode.
+hdfs dfsadmin -refreshNodes	Reloads configuration for DataNodes.
+hdfs dfsadmin -metasave	Saves metadata info for debugging.
+🧠 5 Quality MCQs
+
+1. Which of the following tools is commonly used for Hadoop cluster monitoring?
+A) Eclipse
+B) Apache Ambari
+C) GitHub
+D) TensorFlow
+
+2. What is the function of hdfs dfsadmin -report command?
+A) Starts a Hadoop service
+B) Generates a report of HDFS usage and DataNode health
+C) Deletes under-replicated blocks
+D) Uploads files to HDFS
+
+3. Which Hadoop component is primarily responsible for resource management?
+A) NameNode
+B) YARN
+C) Secondary NameNode
+D) DataNode
+
+4. What is the purpose of the Secondary NameNode?
+A) Acts as a backup NameNode in real time
+B) Periodically merges NameNode edits for checkpointing
+C) Manages MapReduce jobs
+D) Balances data blocks among DataNodes
+
+5. Which metric helps detect missing data blocks in Hadoop?
+A) Job execution time
+B) DataNode health status
+C) Heap memory usage
+D) Network throughput
+
+✅ Answers
+
+B) Apache Ambari — widely used for Hadoop monitoring and management.
+
+B) Generates an HDFS usage and health report.
+
+B) YARN handles resource management and job scheduling.
+
+B) Performs periodic checkpoints for NameNode metadata.
+
+B) DataNode health reveals missing or under-replicated blocks.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
